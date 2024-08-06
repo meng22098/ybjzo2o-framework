@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ybjzo2o.thirdparty.config.AutoConfig

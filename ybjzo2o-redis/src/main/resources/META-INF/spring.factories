@@ -1,0 +1,12 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.springframework.boot.autoconfigure.data.redis.JedisConnectionConfiguration, \
+  org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration, \
+  com.ybjzo2o.redis.config.RedisConfiguration, \
+  com.ybjzo2o.redis.config.RedissonConfiguration, \
+  com.ybjzo2o.redis.config.LockConfiguration, \
+  com.ybjzo2o.redis.config.SpringCacheConfig, \
+  com.ybjzo2o.redis.config.RedisQueueSyncConfiguration
+
+org.springframework.boot.autoconfigure.AutoConfigurationImportFilter=\
+com.ybjzo2o.redis.filter.RedisAutoConfigurationImportFilter
+  
