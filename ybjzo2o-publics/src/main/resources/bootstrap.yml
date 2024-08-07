@@ -22,7 +22,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: ybjzo2o-publics
+    name: jzo2o-publics
   main:
     # 支持循环依赖注入
     allow-circular-references: true

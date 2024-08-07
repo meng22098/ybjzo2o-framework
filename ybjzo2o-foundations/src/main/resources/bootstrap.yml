@@ -22,7 +22,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: ybjzo2o-foundations
+    name: jzo2o-foundations
   main:
     # 支持循环依赖注入
     allow-circular-references: true
@@ -52,10 +52,10 @@ spring:
 
 #################     项目独有配置     #################
 mysql:
-  db-name: ybjzo2o-foundations
+  db-name: jzo2o-foundations
 mybatis:
   mapper-locations: mapper/*.xml
-  type-aliases-package: com.ybjzo2o.foundations.mapper
+  type-aliases-package: com.jzo2o.foundations.mapper
 swagger:
   enable: true
   package-path: com.ybjzo2o.foundations.controller

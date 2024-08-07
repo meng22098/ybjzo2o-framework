@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(prefix = "ali.oss", name = "enable", havingValue = "true")
 @Data
 public class AliOssProperties {
-
     private String endpoint;
     private String accessKeyId;
     private String accessKeySecret;

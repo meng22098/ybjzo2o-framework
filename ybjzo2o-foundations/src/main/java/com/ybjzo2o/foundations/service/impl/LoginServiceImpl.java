@@ -33,8 +33,8 @@ public class LoginServiceImpl implements ILoginService {
      */
     @Override
     public String login(LoginReqDTO loginReqDTO) {
-
         Operator operator = operatorService.findByUsername(loginReqDTO.getUsername());
+        System.out.println(loginReqDTO);
         if (operator == null) {
             throw new RequestForbiddenException("账号或密码错误，请重新输入");
         }

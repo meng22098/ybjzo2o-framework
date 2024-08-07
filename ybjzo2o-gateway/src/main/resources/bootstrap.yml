@@ -6,7 +6,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: ybjzo2o-gateway
+    name: jzo2o-gateway
   cloud:
     nacos:
       config:
@@ -22,61 +22,61 @@ spring:
       routes:
         # 运营端专用，供路由转发
         - id: foundations
-          uri: lb://ybjzo2o-foundations
+          uri: lb://jzo2o-foundations
           predicates:
             - Path=/foundations/**
           filters:
             - Token
         - id: orders-dispatch
-          uri: lb://ybjzo2o-orders-dispatch
+          uri: lb://jzo2o-orders-dispatch
           predicates:
             - Path=/orders-dispatch/**
           filters:
             - Token
         - id: orders-seize
-          uri: lb://ybjzo2o-orders-seize
+          uri: lb://jzo2o-orders-seize
           predicates:
             - Path=/orders-seize/**
           filters:
             - Token
         - id: orders-manager
-          uri: lb://ybjzo2o-orders-manager
+          uri: lb://jzo2o-orders-manager
           predicates:
             - Path=/orders-manager/**
           filters:
             - Token
         - id: orders-history
-          uri: lb://ybjzo2o-orders-history
+          uri: lb://jzo2o-orders-history
           predicates:
             - Path=/orders-history/**
           filters:
             - Token
         - id: publics
-          uri: lb://ybjzo2o-publics
+          uri: lb://jzo2o-publics
           predicates:
             - Path=/publics/**
           filters:
             - Token
         - id: customer
-          uri: lb://ybjzo2o-customer
+          uri: lb://jzo2o-customer
           predicates:
             - Path=/customer/**
           filters:
             - Token
         - id: trade
-          uri: lb://ybjzo2o-trade
+          uri: lb://jzo2o-trade
           predicates:
             - Path=/trade/**
           filters:
             - Token
         - id: market
-          uri: lb://ybjzo2o-market
+          uri: lb://jzo2o-market
           predicates:
             - Path=/market/**
           filters:
             - Token
         - id: health
-          uri: lb://ybjzo2o-health
+          uri: lb://jzo2o-health
           predicates:
             - Path=/health/**
       globalcors: # 全局的跨域处理
@@ -97,8 +97,8 @@ spring:
 
 logging:
   level:
-    com.ybjzo2o: debug
-ybjzo2o:
+    com.jzo2o: debug
+jzo2o:
   access-path-white-list:
     - /foundations/open/login
     - /customer/open/login/worker

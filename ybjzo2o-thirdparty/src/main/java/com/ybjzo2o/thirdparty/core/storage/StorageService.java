@@ -5,6 +5,7 @@ import java.io.InputStream;
 /**
  * @author hyfjs
  */
+
 public interface StorageService {
     /**
      * 文件上传

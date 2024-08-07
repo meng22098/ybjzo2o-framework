@@ -35,6 +35,7 @@ public class OperatorServiceImpl extends ServiceImpl<OperatorMapper, Operator> i
      */
     @Override
     public Operator findByUsername(String username) {
+        System.out.println(username);
         return lambdaQuery().eq(Operator::getUsername, username).one();
     }
 
