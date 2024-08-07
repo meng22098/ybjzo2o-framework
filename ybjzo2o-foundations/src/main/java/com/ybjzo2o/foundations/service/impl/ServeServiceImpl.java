@@ -33,7 +33,7 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
     RegionMapper regionMapper;
 
     /**
-     *
+     *区域服务分页查询
      * @param servePageQueryReqDTO
      * @return
      */
@@ -45,7 +45,7 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
     }
 
     /**
-     *
+     *区域服务批量新增
      * @param serveUpsertReqDTOList
      */
     @Transactional
@@ -75,6 +75,13 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
             baseMapper.insert(serve);
         }
     }
+
+    /**
+     * 修改价格
+     * @param id
+     * @param price
+     * @return
+     */
     @Transactional
     @Override
     public  Serve update(long id, BigDecimal price) {
@@ -89,6 +96,11 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
         return baseMapper.selectById(id);
     }
 
+    /**
+     * 区域服务上架
+     * @param id
+     * @return
+     */
     @Override
     @Transactional
     public Serve onSale(Long id) {
@@ -126,6 +138,11 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
         return baseMapper.selectById(id);
     }
 
+    /**
+     * 删除区域服务
+     * @param id
+     * @return
+     */
     @Override
     public Serve delete(Long id) {
         Serve serve = baseMapper.selectById(id);
@@ -143,6 +160,11 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
         return baseMapper.selectById(id);
     }
 
+    /**
+     * 设置热门
+     * @param id
+     * @return
+     */
     @Override
     public Serve onHot(Long id) {
         Serve serve = baseMapper.selectById(id);
@@ -163,6 +185,11 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
         return baseMapper.selectById(id);
     }
 
+    /**
+     * 取消热门
+     * @param id
+     * @return
+     */
     @Override
     public Serve offHot(Long id) {
         Serve serve = baseMapper.selectById(id);
@@ -182,6 +209,11 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
         return baseMapper.selectById(id);
     }
 
+    /**
+     * 区域服务下架
+     * @param id
+     * @return
+     */
     @Override
     public Serve offSale(Long id) {
         Serve serve = baseMapper.selectById(id);
@@ -201,6 +233,13 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
         }
         return baseMapper.selectById(id);
     }
+
+    /**
+     * 根据区域查询服务数量
+     * @param id
+     * @param status
+     * @return
+     */
     @Override
     public int queryServeCountByRegionIdAndSaleStatus(Long id,int status) {
         Integer count = lambdaQuery()

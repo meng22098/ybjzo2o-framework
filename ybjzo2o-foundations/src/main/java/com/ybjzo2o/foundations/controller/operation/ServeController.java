@@ -63,7 +63,7 @@ public class ServeController {
         serveService.delete(id);
     }
     @PutMapping("/offSale/{id}")
-    @ApiOperation("设置热门")
+    @ApiOperation("区域服务下架")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "服务id", required = true, dataTypeClass = Long.class),
     })
@@ -81,7 +81,7 @@ public class ServeController {
         serveService.onHot(id);
     }
     @PutMapping("/offHot/{id}")
-    @ApiOperation("设置热门")
+    @ApiOperation("取消热门")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "服务id", required = true, dataTypeClass = Long.class),
     })
