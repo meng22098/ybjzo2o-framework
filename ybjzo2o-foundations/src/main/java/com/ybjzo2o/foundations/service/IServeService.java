@@ -28,4 +28,6 @@ public interface IServeService extends IService<Serve> {
     Serve offSale(Long id);
 
     int queryServeCountByRegionIdAndSaleStatus(Long id, int status);
+
+    int queryServeCountByServeItemIdAndSaleStatus(Long id, int status);
 }

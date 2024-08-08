@@ -15,7 +15,7 @@ import java.util.Map;
  *
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-customer", value = "ybjzo2o-customer", path = "/customer/inner/serve-provider", qualifiers = "customerServeProviderApi")
+@FeignClient(contextId = "jzo2o-customer", value = "jzo2o-customer", path = "/customer/inner/serve-provider", qualifiers = "customerServeProviderApi")
 public interface ServeProviderApi {
 
     @GetMapping("/{id}")

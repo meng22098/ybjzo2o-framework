@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * 机构相关列表
  */
-@FeignClient(contextId = "ybjzo2o-customer", value = "ybjzo2o-customer", path = "/customer/inner/institutions/user")
+@FeignClient(contextId = "jzo2o-customer", value = "jzo2o-customer", path = "/customer/inner/institutions/user")
 public interface InstitutionApi {
 
     /**

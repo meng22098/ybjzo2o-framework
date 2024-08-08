@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-customer", value = "ybjzo2o-customer", path = "/customer/inner/evaluation")
+@FeignClient(contextId = "jzo2o-customer", value = "jzo2o-customer", path = "/customer/inner/evaluation")
 public interface EvaluationApi {
 
     /**

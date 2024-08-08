@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-foundations", value = "ybjzo2o-foundations", path = "/foundations/inner/serve-type")
+@FeignClient(contextId = "jzo2o-foundations", value = "jzo2o-foundations", path = "/foundations/inner/serve-type")
 public interface ServeTypeApi {
 
     @GetMapping("/listByIds")

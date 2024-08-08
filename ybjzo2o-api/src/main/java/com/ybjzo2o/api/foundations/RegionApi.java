@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-foundations", value = "ybjzo2o-foundations", path = "/foundations/inner/region")
+@FeignClient(contextId = "jzo2o-foundations", value = "jzo2o-foundations", path = "/foundations/inner/region")
 public interface RegionApi {
 
     /**

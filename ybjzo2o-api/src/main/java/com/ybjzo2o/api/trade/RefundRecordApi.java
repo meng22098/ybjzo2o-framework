@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 /**
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-trade", value = "ybjzo2o-trade", path = "/trade/inner/refund-record")
+@FeignClient(contextId = "jzo2o-trade", value = "jzo2o-trade", path = "/trade/inner/refund-record")
 public interface RefundRecordApi {
 
     /***

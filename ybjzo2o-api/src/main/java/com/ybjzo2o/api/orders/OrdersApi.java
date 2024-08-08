@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-orders-manager", value = "ybjzo2o-orders-manager", path = "/orders-manager/inner/orders", configuration = MyQueryMapEncoder.class)
+@FeignClient(contextId = "jzo2o-orders-manager", value = "jzo2o-orders-manager", path = "/orders-manager/inner/orders", configuration = MyQueryMapEncoder.class)
 public interface OrdersApi {
 
 

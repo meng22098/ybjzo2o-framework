@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-trade", value = "ybjzo2o-trade", path = "/trade/inner/tradings")
+@FeignClient(contextId = "jzo2o-trade", value = "jzo2o-trade", path = "/trade/inner/tradings")
 public interface TradingApi {
 
     /**

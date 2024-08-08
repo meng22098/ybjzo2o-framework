@@ -207,7 +207,6 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
         if (count > 0) {
             throw new ForbiddenOperationException("区域下有上架的服务无法禁用");
         }
-
         //更新禁用状态
         LambdaUpdateWrapper<Region> updateWrapper = Wrappers.<Region>lambdaUpdate()
                 .eq(Region::getId, id)

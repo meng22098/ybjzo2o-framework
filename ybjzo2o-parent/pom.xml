@@ -23,8 +23,8 @@
         <module>../ybjzo2o-foundations</module>
         <module>../ybjzo2o-gateway</module>
         <module>../ybjzo2o-publics</module>
+        <module>../ybjzo2o-customer</module>
     </modules>
-
     <groupId>com.ybjzo2o</groupId>
     <artifactId>ybjzo2o-parent</artifactId>
     <version>1.0-SNAPSHOT</version>

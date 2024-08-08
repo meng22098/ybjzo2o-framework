@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-publics", value = "ybjzo2o-publics", path = "/publics/inner/map")
+@FeignClient(contextId = "jzo2o-publics", value = "jzo2o-publics", path = "/publics/inner/map")
 public interface MapApi {
 
     @GetMapping("/getLocationByAddress")

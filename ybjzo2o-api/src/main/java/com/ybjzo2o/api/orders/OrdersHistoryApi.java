@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(contextId = "ybjzo2o-orders-history", value = "ybjzo2o-orders-history", path = "/orders-history/inner/orders", configuration = MyQueryMapEncoder.class)
+@FeignClient(contextId = "jzo2o-orders-history", value = "jzo2o-orders-history", path = "/orders-history/inner/orders", configuration = MyQueryMapEncoder.class)
 public interface OrdersHistoryApi {
 
     /**

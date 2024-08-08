@@ -248,4 +248,18 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
                 .count();
         return count;
     }
+    /**
+     * 根据服务项查询服务数量
+     * @param id
+     * @param status
+     * @return
+     */
+    @Override
+    public int queryServeCountByServeItemIdAndSaleStatus(Long id, int status) {
+        Integer count = lambdaQuery()
+                .eq(Serve::getServeItemId,id)
+                .eq(Serve::getSaleStatus,status)
+                .count();
+        return count;
+    }
 }

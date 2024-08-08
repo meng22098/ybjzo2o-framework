@@ -1,11 +1,8 @@
 package com.ybjzo2o.api.customer;
 
 import com.ybjzo2o.api.customer.dto.request.InstitutionStaffAddReqDTO;
-import com.ybjzo2o.api.customer.dto.request.InstitutionStaffPageQueryReqDTO;
 import com.ybjzo2o.api.customer.dto.response.InstitutionStaffResDTO;
-import com.ybjzo2o.common.model.PageResult;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
  *
  * @author fjs
  */
-@FeignClient(contextId = "ybjzo2o-customer", value = "ybjzo2o-customer", path = "/customer/inner/institution-staff")
+@FeignClient(contextId = "jzo2o-customer", value = "jzo2o-customer", path = "/customer/inner/institution-staff")
 public interface InstitutionStaffApi {
 
     /**
