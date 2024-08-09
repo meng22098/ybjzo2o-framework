@@ -61,7 +61,7 @@ public class WorkerCertificationAuditResDTO {
      * 审核状态，0：未审核，1：已审核
      */
     @ApiModelProperty("审核状态，0：未审核，1：已审核")
-    private Integer auditStatus;
+    private Integer auditStatus=0;
 
     /**
      * 审核人id
@@ -85,7 +85,7 @@ public class WorkerCertificationAuditResDTO {
      * 认证状态，1：认证中，2：认证成功，3认证失败
      */
     @ApiModelProperty("认证状态，1：认证中，2：认证成功，3认证失败")
-    private Integer certificationStatus;
+    private Integer certificationStatus=1;
 
     /**
      * 驳回原因

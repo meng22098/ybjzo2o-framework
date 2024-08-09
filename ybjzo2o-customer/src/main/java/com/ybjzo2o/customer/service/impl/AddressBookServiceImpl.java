@@ -106,13 +106,11 @@ public class AddressBookServiceImpl extends ServiceImpl<AddressBookMapper, Addre
      */
     @Override
     public PageResult<AddressBookResDTO> pageQuery(AddressBookPageQueryReqDTO addressBookPageQueryReqDTO) {
-        Page<AddressBook> page =
-                PageUtils.parsePageQuery(addressBookPageQueryReqDTO, AddressBook.class);
+        Page<AddressBook> page = PageUtils.parsePageQuery(addressBookPageQueryReqDTO, AddressBook.class);
         LambdaQueryWrapper<AddressBook> queryWrapper = Wrappers.
                 <AddressBook>lambdaQuery().eq(AddressBook::getUserId,
                 UserContext.currentUserId());
-        Page<AddressBook> serveTypePage = addressBookMapper.selectPage(page,
-                queryWrapper);
+        Page<AddressBook> serveTypePage = addressBookMapper.selectPage(page, queryWrapper);
         return PageUtils.toPage(serveTypePage, AddressBookResDTO.class);
     }
 

@@ -3,6 +3,10 @@ package com.ybjzo2o.customer.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.ObjectUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ybjzo2o.api.customer.dto.request.InstitutionStaffAddReqDTO;
 import com.ybjzo2o.api.customer.dto.request.InstitutionStaffPageQueryReqDTO;
 import com.ybjzo2o.api.customer.dto.response.InstitutionStaffResDTO;
@@ -18,14 +22,9 @@ import com.ybjzo2o.customer.model.dto.response.InstitutionStaffSimpleResDTO;
 import com.ybjzo2o.customer.service.IInstitutionStaffService;
 import com.ybjzo2o.mvc.utils.UserContext;
 import com.ybjzo2o.mysql.utils.PageUtils;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -86,11 +85,14 @@ public class InstitutionStaffServiceImpl extends ServiceImpl<InstitutionStaffMap
      */
     @Override
     public PageResult<InstitutionStaffResDTO> pageQuery(InstitutionStaffPageQueryReqDTO institutionStaffPageQueryReqDTO) {
+        //分页参数解析：
         Page<InstitutionStaff> page = PageUtils.parsePageQuery(institutionStaffPageQueryReqDTO, InstitutionStaff.class);
+        //构建查询条件
         LambdaQueryWrapper<InstitutionStaff> queryWrapper = Wrappers.<InstitutionStaff>lambdaQuery()
                 .eq(InstitutionStaff::getInstitutionId, institutionStaffPageQueryReqDTO.getInstitutionId())
                 .eq(ObjectUtil.isNotEmpty(institutionStaffPageQueryReqDTO.getName()), InstitutionStaff::getName, institutionStaffPageQueryReqDTO.getName())
                 .eq(ObjectUtil.isNotEmpty(institutionStaffPageQueryReqDTO.getPhone()), InstitutionStaff::getPhone, institutionStaffPageQueryReqDTO.getPhone());
+        //查询
         Page<InstitutionStaff> serveTypePage = baseMapper.selectPage(page, queryWrapper);
 
         return PageUtils.toPage(serveTypePage, InstitutionStaffResDTO.class, (entity, dto) -> {
