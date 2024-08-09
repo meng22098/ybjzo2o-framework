@@ -24,6 +24,5 @@ public class SwaggerFilter implements Filter {
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
-
     }
 }

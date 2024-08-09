@@ -7,7 +7,6 @@ import com.ybjzo2o.api.customer.dto.response.ServeProviderSimpleResDTO;
 import com.ybjzo2o.common.model.PageResult;
 import com.ybjzo2o.customer.model.domain.ServeProvider;
 import com.ybjzo2o.customer.model.dto.request.InstitutionRegisterReqDTO;
-import com.ybjzo2o.customer.model.dto.request.InstitutionResetPasswordReqDTO;
 import com.ybjzo2o.customer.model.dto.request.ServeProviderPageQueryReqDTO;
 import com.ybjzo2o.customer.model.dto.response.CertificationStatusDTO;
 import com.ybjzo2o.customer.model.dto.response.ServeProviderBasicInformationResDTO;
@@ -121,4 +120,7 @@ public interface IServeProviderService extends IService<ServeProvider> {
      * @return
      */
     CertificationStatusDTO getCertificationStatus(Integer userType, Long providerId);
+    void resetPassword(String phone, Integer type, String password);
+
+    void register(InstitutionRegisterReqDTO institutionRegisterReqDTO);
 }

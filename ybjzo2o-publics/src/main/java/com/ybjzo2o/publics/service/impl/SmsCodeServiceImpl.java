@@ -43,11 +43,10 @@ public class SmsCodeServiceImpl implements ISmsCodeService {
         // 1.验证前准备
         String redisKey = String.format(CommonRedisConstants.RedisKey.VERIFY_CODE, phone, bussinessType.getType());
         String verifyCodeInRedis = redisTemplate.opsForValue().get(redisKey);
-        System.out.println(verifyCode);
-        System.out.println(verifyCodeInRedis+"1");
         // 2.短验验证，验证通过后删除code，code只能使用一次
         boolean verifyResult = true;
 //                StringUtils.isNotEmpty(verifyCode) && verifyCode.equals(verifyCodeInRedis);
+        // todo
         if(verifyResult) {
             redisTemplate.delete(redisKey);
         }

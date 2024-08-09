@@ -16,17 +16,11 @@ import com.ybjzo2o.common.enums.EnableStatusEnum;
 import com.ybjzo2o.common.enums.SmsBussinessTypeEnum;
 import com.ybjzo2o.common.expcetions.BadRequestException;
 import com.ybjzo2o.common.model.PageResult;
-import com.ybjzo2o.common.utils.BeanUtils;
-import com.ybjzo2o.common.utils.CollUtils;
-import com.ybjzo2o.common.utils.IdUtils;
-import com.ybjzo2o.common.utils.ObjectUtils;
 import com.ybjzo2o.common.utils.*;
 import com.ybjzo2o.customer.mapper.ServeProviderMapper;
 import com.ybjzo2o.customer.model.domain.*;
 import com.ybjzo2o.customer.model.dto.ServeSkillSimpleDTO;
 import com.ybjzo2o.customer.model.dto.request.InstitutionRegisterReqDTO;
-import com.ybjzo2o.customer.model.dto.request.InstitutionResetPasswordReqDTO;
-import com.ybjzo2o.customer.model.dto.request.ServePickUpReqDTO;
 import com.ybjzo2o.customer.model.dto.request.ServeProviderPageQueryReqDTO;
 import com.ybjzo2o.customer.model.dto.response.CertificationStatusDTO;
 import com.ybjzo2o.customer.model.dto.response.ServeProviderBasicInformationResDTO;
@@ -126,8 +120,7 @@ public class ServeProviderServiceImpl extends ServiceImpl<ServeProviderMapper, S
     @Transactional(rollbackFor = Exception.class)
     public ServeProvider add(String phone, Integer type, String password) {
         // 校验手机号是否存在
-        ServeProvider existServeProvider = lambdaQuery().eq(ServeProvider::getPhone, phone)
-                .one();
+        ServeProvider existServeProvider = lambdaQuery().eq(ServeProvider::getPhone, phone).one();
         if (existServeProvider != null) {
             if(existServeProvider.getType().equals(UserType.WORKER)){
                 throw new BadRequestException("该账号已被服务人员注册");
@@ -135,7 +128,6 @@ public class ServeProviderServiceImpl extends ServiceImpl<ServeProviderMapper, S
                 throw new BadRequestException("该账号已被机构注册");
             }
         }
-
         //新增服务人员/机构信息
         ServeProvider serveProvider = new ServeProvider();
         serveProvider.setPhone(phone);
@@ -164,7 +156,6 @@ public class ServeProviderServiceImpl extends ServiceImpl<ServeProviderMapper, S
         serveProviderResDTO.setCityCode(serveProviderSettings.getCityCode());
         // 是否开启接单
         serveProviderResDTO.setCanPickUp(EnableStatusEnum.ENABLE.equals(serveProviderSettings.getCanPickUp()));
-
         //获取认证状态
         CertificationStatusDTO certificationStatusDTO = getCertificationStatus(serveProvider.getType(), id);
         //获取认证状态
@@ -204,6 +195,53 @@ public class ServeProviderServiceImpl extends ServiceImpl<ServeProviderMapper, S
             AgencyCertification agencyCertification = agencyCertificationService.getById(providerId);
             return BeanUtil.toBean(agencyCertification,CertificationStatusDTO.class);
         }
+    }
+
+    /**
+     *  修改密码
+     * @param phone
+     * @param type
+     * @param password
+     */
+    @Override
+    public void resetPassword(String phone, Integer type, String password) {
+        boolean Code=verifycode(phone,SmsBussinessTypeEnum.SERVE_STAFF_LOGIN,password);
+        if (!Code)
+        {
+            throw new BadRequestException("短信验证码校验失败");
+        }
+        // 校验手机号是否存在
+        ServeProvider existServeProvider = lambdaQuery().eq(ServeProvider::getPhone, phone).one();
+        if (existServeProvider == null) {
+            throw new BadRequestException("没有该账号");
+        }
+        //修改密码
+        lambdaUpdate()
+                .eq(ServeProvider::getPhone, phone)
+                .eq(ServeProvider::getType,type)
+                .set(ServeProvider::getPassword, password);
+    }
+
+    public boolean verifycode(String phone,SmsBussinessTypeEnum typeEnum,String Code)
+    {
+        if(StringUtils.isEmpty(Code)){
+            throw new BadRequestException("验证码错误，请重新获取");
+        }
+        boolean verifyResult = smsCodeApi.verify(phone,typeEnum,Code).getIsSuccess();
+        System.out.println(verifyResult);
+        if(!verifyResult) {
+            throw new BadRequestException("验证码错误，请重新获取");
+        }
+        return true;
+    }
+    @Override
+    public void register(InstitutionRegisterReqDTO institutionRegisterReqDTO) {
+        boolean Code=verifycode(institutionRegisterReqDTO.getPhone(),SmsBussinessTypeEnum.SERVE_STAFF_LOGIN,institutionRegisterReqDTO.getVerifyCode());
+        if (!Code)
+        {
+            throw new BadRequestException("短信验证码校验失败");
+        }
+        owner.add(institutionRegisterReqDTO.getPhone(), UserType.INSTITUTION, passwordEncoder.encode(institutionRegisterReqDTO.getPassword()));
     }
 
     /**
